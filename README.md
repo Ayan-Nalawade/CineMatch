@@ -47,6 +47,12 @@ npm run dev
 
 This will open the application at `http://localhost:5173` 
 
+## Known Problems
+
+The program currently doesn't understand age ratings and may suggest unwanted content..The functionality will be added soon
+Currently the program suggests any movie. Will update it to suggest based on recently watched. 
+
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request or open an issue if you find a bug or have a feature request.
