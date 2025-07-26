@@ -45,7 +45,7 @@ To start the development server and view the application in your browser:
 npm run dev
 ```
 
-This will typically open the application at `http://localhost:5173` (or another available port).
+This will open the application at `http://localhost:5173` 
 
 ## Contributing
 
