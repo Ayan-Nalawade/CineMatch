@@ -1,0 +1,677 @@
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000;
+    color: #fff;
+}
+
+.background-collage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.background-collage img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to start, not center vertically */
+    min-height: 100vh;
+    width: 100vw; /* Ensure it takes full viewport width */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+.input-group-custom {
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+
+.form-control-custom {
+    flex-grow: 1;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-control-custom:focus {
+    border-color: #fff;
+}
+
+.btn-custom {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #ccc;
+}
+
+.media-type-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.media-type-btn {
+    background: none;
+    border: 1px solid #333;
+    color: #888;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.media-type-btn.active {
+    color: #fff;
+    border-color: #fff;
+}
+
+.series-inputs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+.series-inputs .form-control-custom {
+    border-radius: 20px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Profile Selection Styles */
+.profile-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw; /* Ensure it takes full viewport width */
+    background-color: #141414;
+}
+
+.profile-selection-title {
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+}
+
+.profiles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.profile-item:hover .profile-avatar {
+    border-color: #fff;
+}
+
+.profile-name {
+    color: #808080;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.profile-item:hover .profile-name {
+    color: #fff;
+}
+
+.delete-profile-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-item:hover .delete-profile-btn {
+    opacity: 1;
+}
+
+.add-profile-item {
+    background-color: #333;
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.add-profile-item:hover {
+    background-color: #555;
+}
+
+.add-profile-icon {
+    color: #fff;
+    font-size: 4rem;
+    line-height: 1;
+}
+
+/* Create Profile Styles */
+.create-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw; /* Ensure it takes full viewport width */
+    background-color: #141414;
+}
+
+.create-profile-title {
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.profile-name-input {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.profile-name-input:focus {
+    border-color: #e50914;
+}
+
+.create-profile-btn,
+.cancel-create-profile-btn {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-create-profile-btn {
+    background-color: #555;
+}
+
+.create-profile-btn:hover {
+    background-color: #ff0a16;
+}
+
+.cancel-create-profile-btn:hover {
+    background-color: #777;
+}
+
+/* Main App Content Layout */
+.main-app-content {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    transition: margin-left 0.5s, width 0.5s; /* Add width transition */
+}
+
+.main-app-content.sidebar-open {
+    margin-left: 250px; /* Shift content when sidebar is open */
+    width: calc(100vw - 250px); /* Adjust width */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 0; /* Hidden by default */
+    background-color: #000;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px; /* Adjusted padding */
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+}
+
+.sidebar.open {
+    width: 250px; /* Show when open */
+    padding-left: 20px;
+}
+
+.profile-info-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.profile-avatar-sidebar {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-name-sidebar {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.switch-profile-btn-sidebar {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.switch-profile-btn-sidebar:hover {
+    background-color: #ff0a16;
+}
+
+.sidebar-item {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .form-control-custom, .sidebar .btn-custom {
+    width: auto;
+    border-radius: 5px; /* Adjust for sidebar */
+}
+
+.sidebar .input-group-custom {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 32px;
+}
+
+.sidebar .media-type-selector {
+    justify-content: flex-start;
+    padding: 0 32px;
+}
+
+.sidebar .series-inputs {
+    padding: 0 32px;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1002; /* Above sidebar */
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: #ff0a16;
+}
+
+/* Close Sidebar Button */
+.close-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1003;
+}
+
+/* Movie Suggestions Styles */
+.movie-suggestions-container {
+    flex-grow: 1; /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to start, not center vertically */
+    min-height: 100vh;
+    width: 100%; /* Adjust width to account for sidebar */
+    background-color: #141414;
+    color: #fff;
+    font-size: 2rem;
+    padding-top: 50px; /* Keep some padding for the top content */
+    box-sizing: border-box; /* Include padding in width/height */
+    margin-left: 0; /* Default, no margin */
+    transition: margin-left 0.5s;
+}
+
+.movie-suggestions-container h2 {
+    margin-bottom: 20px;
+}
+
+.switch-profile-btn {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px; /* Add margin below the button */
+}
+
+.switch-profile-btn:hover {
+    background-color: #ff0a16;
+}
+
+.search-container {
+    width: 90%; /* Adjust as needed, or use max-width */
+    max-width: 1200px; /* Keep max-width for better readability on very wide screens */
+    margin-bottom: 30px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90%; /* Adjust as needed, or use max-width */
+    max-width: 1200px; /* Keep max-width for better readability on very wide screens */
+    padding-bottom: 50px; /* Add padding to the bottom */
+}
+
+.movie-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    position: relative; /* For absolute positioning of options */
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 300px; /* Fixed height for posters */
+    object-fit: cover;
+}
+
+.movie-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.movie-options {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-item:hover .movie-options {
+    opacity: 1;
+}
+
+.option-btn {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.option-btn:last-child {
+    margin-bottom: 0;
+}
+
+.option-btn:hover {
+    background-color: #ff0a16;
+}
+
+/* Fullscreen Video Container */
+.video-container.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999; /* Increased z-index */
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container.fullscreen iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(229, 9, 20, 0.8); /* Netflix red with some transparency */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10000; /* Above video, below sidebar */
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff0a16;
+}
+
+/* Search Overlay Styles */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.close-search-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.search-input-container {
+    display: flex;
+    width: 80%;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.search-overlay-input {
+    border-radius: 5px 0 0 5px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+}
+
+.search-overlay-btn {
+    border-radius: 0 5px 5px 0;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+}
+
+.search-overlay-media-type {
+    margin-bottom: 30px;
+}
+
+.search-overlay-series-inputs {
+    margin-bottom: 30px;
+}
+
+.search-results-grid {
+    width: 90%;
+    max-width: 1200px;
+}
